@@ -43,11 +43,16 @@ Please see the [LineageOS Wiki](http://wiki.lineageos.org/) for building instruc
 
 For more information on this Github Organization and how it is structured, 
 please [read the wiki article](http://wiki.lineageos.org/w/Github_Organization)
-Before build add/overwrite files in /device/huawei/u8xxx with appropriate files BoardConfig.mk and lineage.mk
-Also overwrite kernel defconfig in /kernel/huawei/huawei-kernel-3.4/arch/arm/configs with u8833_defconfig
+Before build add/overwrite files in
+
+    /device/huawei/u8xxx with appropriate files BoardConfig.mk and lineage.mk
+Also overwrite kernel defconfig in 
+
+    /kernel/huawei/huawei-kernel-3.4/arch/arm/configs with u8833_defconfig
 
 Build it with:
-      . build/envsetup.sh (make sure all patches from /device/huawei/msm7x25-common/patches are applied)
+
+      . build/envsetup.sh (make sure all patches from /device/huawei/msm7x27a-common/patches are applied)
       breakfast u8825 (or u8833 or u8951)
       brunch u8825 (for Huawei G300)
       
