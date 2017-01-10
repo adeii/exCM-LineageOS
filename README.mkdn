@@ -28,11 +28,13 @@ Getting Started <-- I would like CM14.x for Huawei... but not device tree/kernel
 
 To get started with Android/LineageOS, you'll need to get
 familiar with [Git and Repo](http://source.android.com/source/using-repo.html).
-Add Huawei dev-tree: https://github.com/adeii/InfinitiveOS_manifest/blob/mm6.0/huawei.xml
+
 To initialize your local repository using the LineageOS trees, use a command like this:
 
     repo init -u git://github.com/LineageOS/android.git -b cm-13.0
 
+    mkdir .repo/local_manifest
+    cp huawei.xml .repo/local_manifest
 Then to sync up:
 
     repo sync --force-sync --no-tags --no-clone-bundle
@@ -41,6 +43,15 @@ Please see the [LineageOS Wiki](http://wiki.lineageos.org/) for building instruc
 
 For more information on this Github Organization and how it is structured, 
 please [read the wiki article](http://wiki.lineageos.org/w/Github_Organization)
+Before build add/overwrite files in /device/huawei/u8xxx with appropriate files BoardConfig.mk and lineage.mk
+Also overwrite kernel defconfig in /kernel/huawei/huawei-kernel-3.4/arch/arm/configs with u8833_defconfig
+
+Build it with:
+      . build/envsetup.sh (make sure all patches from /device/huawei/msm7x25-common/patches are applied)
+      breakfast u8825 (or u8833 or u8951)
+      brunch u8825 (for Huawei G300)
+      
+And you have to push bootanimation.zip to /system/media/ before making system image or in finished .zip
 
 Buildbot
 --------
