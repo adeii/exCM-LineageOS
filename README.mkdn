@@ -49,6 +49,10 @@ Before build add/overwrite files in
 Also overwrite kernel defconfig in 
 
     /kernel/huawei/huawei-kernel-3.4/arch/arm/configs with u8833_defconfig
+Also need to bypass bootanimation half resize and restore SuperUser, by excuting or appending in BoardConfig.mk :
+    
+    export WITH_SU=true
+    export TARGET_BOOTANIMATION_HALF_RES=false
 
 Build it with:
 
@@ -56,7 +60,6 @@ Build it with:
       breakfast u8825 (or u8833 or u8951)
       brunch u8825 (for Huawei G300)
       
-And you have to push bootanimation.zip to /system/media/ before making system image or in finished .zip
 
 Buildbot
 --------
