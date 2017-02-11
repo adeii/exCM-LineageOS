@@ -17,6 +17,8 @@ PRODUCT_PREBUILT_WEBVIEWCHROMIUM=yes
 ANDROID_COMPILE_WITH_JACK := false
 DISABLE_DEXPREOPT=true
 WITH_DEXPREOPT=false
+TARGET_BOOTANIMATION_HALF_RES=false
+WITH_SU=true
 # Inherit from the proprietary version
 -include vendor/huawei/u8833/BoardConfigVendor.mk
 
