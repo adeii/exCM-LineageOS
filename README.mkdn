@@ -23,7 +23,7 @@ Commit your patches in a single commit. Squash multiple commit using this comman
 To view the status of your and others' patches, visit [LineageOS Code Review](http://review.lineageos.org/)
 
 
-Getting Started <-- I would like CM14.x for Huawei... but not device tree/kernel for now, so CM13-Y300 is last one.
+Getting Started --- still no working CM14.x for Huawei msm7x27a devices, so Lineage 13 is last one.
 ---------------
 
 To get started with Android/LineageOS, you'll need to get
@@ -31,7 +31,7 @@ familiar with [Git and Repo](http://source.android.com/source/using-repo.html).
 
 To initialize your local repository using the LineageOS trees, use a command like this:
 
-    repo init -u git://github.com/LineageOS/android.git -b cm-13.0
+    repo init -u git://github.com/adeii/exCM-LineageOS/default.git -b cm-13.0
 
     mkdir .repo/local_manifest
     cp huawei.xml .repo/local_manifest
