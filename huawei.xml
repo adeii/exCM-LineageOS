@@ -10,7 +10,8 @@
 
      <!-- WIFI -->
      <project path="hardware/atheros/wifi/ath6kl-huawei" name="SlimLP-Y300/android_hardware_atheros_wifi_ath6kl-huawei" remote="github" revision="master" />
-     <project path="hardware/atheros/wlan" name="CM13-Y300/android_hardware_atheros_wlan" remote="github" revision="cm-13.0" />
+   <!-- alternative project path="hardware/atheros/wifi/ath6kl-huawei" name="knoelli/android_hardware_atheros_wifi_ath6kl" remote="github" revision="u8833" /-->  
+   <project path="hardware/atheros/wlan" name="CM13-Y300/android_hardware_atheros_wlan" remote="github" revision="cm-13.0" />
 
      <!-- GPS -->
      <remove-project name="LineageOS/android_hardware_qcom_gps" />
