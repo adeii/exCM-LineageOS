@@ -31,7 +31,7 @@ familiar with [Git and Repo](http://source.android.com/source/using-repo.html).
 
 To initialize your local repository using the LineageOS trees, use a command like this:
 
-    repo init -u git://github.com/adeii/exCM-LineageOS/default.git -b cm-13.0
+    repo init -u git://github.com/adeii/exCM-LineageOS.git -b cm-13.0
 
     mkdir .repo/local_manifest
     cp huawei.xml .repo/local_manifest
