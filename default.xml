@@ -4,7 +4,7 @@
   <remote  name="aosp"
            fetch="https://android.googlesource.com"
            review="android-review.googlesource.com"
-           revision="refs/tags/android-6.0.1_r79" />
+           revision="refs/tags/android-6.0.1_r81" />
 
   <remote  name="github"
            fetch=".."
@@ -66,11 +66,11 @@
   <project path="external/f2fs-tools" name="LineageOS/android_external_f2fs-tools" groups="pdk" />
   <project path="external/ffmpeg" name="LineageOS/android_external_ffmpeg" />
   <project path="external/flac" name="LineageOS/android_external_flac" groups="pdk" />
-  <project path="external/freetype" name="LineageOS/android_external_freetype" groups="pdk" />
+  <project path="external/freetype" name="platform/external/freetype" groups="pdk" remote="aosp" />
   <project path="external/fsck_msdos" name="LineageOS/android_external_fsck_msdos" groups="pdk-cw-fs,pdk-fs" />
   <project path="external/fuse" name="LineageOS/android_external_fuse" />
   <project path="external/gello-build" name="LineageOS/android_external_gello_build" />
-  <project path="external/giflib" name="LineageOS/android_external_giflib" groups="pdk,qcom_msm8x26" />
+  <project path="external/giflib" name="platform/external/giflib" groups="pdk,qcom_msm8x26" remote="aosp" />
   <project path="external/gmock" name="LineageOS/android_external_gmock"/>
   <project path="external/gptfdisk" name="LineageOS/android_external_gptfdisk" groups="pdk-fs" />
   <project path="external/gson" name="LineageOS/android_external_gson" />
@@ -85,7 +85,7 @@
   <project path="external/jsr305" name="LineageOS/android_external_jsr305" groups="pdk-cw-fs,pdk-fs" />
   <project path="external/koush/AndroidAsync" name="LineageOS/AndroidAsync" />
   <project path="external/koush/ion" name="LineageOS/ion" />
-  <project path="external/libavc" name="LineageOS/android_external_libavc" groups="pdk" />
+  <project path="external/libavc" name="platform/external/libavc" groups="pdk" remote="aosp" />
   <project path="external/libhevc" name="LineageOS/android_external_libhevc" groups="pdk-fs" />
   <project path="external/libmpeg2" name="LineageOS/android_external_libmpeg2" groups="pdk" />
   <project path="external/libncurses" name="LineageOS/android_external_libncurses" />
@@ -126,7 +126,7 @@
   <project path="external/sonivox" name="LineageOS/android_external_sonivox" groups="pdk" />
   <project path="external/speex" name="LineageOS/android_external_speex" groups="pdk" />
   <project path="external/spongycastle" name="LineageOS/android_external_spongycastle" groups="pdk" />
-  <project path="external/sqlite" name="LineageOS/android_external_sqlite" groups="pdk" />
+  <project path="external/sqlite" name="platform/external/sqlite" groups="pdk" remote="aosp" />
   <project path="external/stagefright-plugins" name="LineageOS/android_external_stagefright-plugins" />
   <project path="external/strace" name="LineageOS/android_external_strace" groups="pdk-cw-fs,pdk-fs" />
   <project path="external/tcpdump" name="LineageOS/android_external_tcpdump" groups="pdk,pdk-cw-fs,pdk-fs" />
@@ -432,7 +432,7 @@
   <project path="external/tagsoup" name="platform/external/tagsoup" groups="pdk-cw-fs,pdk-fs" remote="aosp" />
   <project path="external/timezonepicker-support" name="platform/external/timezonepicker-support" groups="pdk-cw-fs,pdk-fs" remote="aosp" />
   <project path="external/tinyxml" name="platform/external/tinyxml" groups="pdk" remote="aosp" />
-  <project path="external/tremolo" name="platform/external/tremolo" groups="pdk" remote="aosp" />
+  <project path="external/tremolo" name="LineageOS/android_external_tremolo" groups="pdk" />
   <project path="external/v8" name="platform/external/v8" groups="pdk" remote="aosp" />
   <project path="external/valgrind" name="platform/external/valgrind" groups="pdk" remote="aosp" />
   <project path="external/vboot_reference" name="platform/external/vboot_reference" groups="vboot" remote="aosp" />
