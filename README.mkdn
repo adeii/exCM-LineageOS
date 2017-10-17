@@ -44,11 +44,14 @@ Please see the [LineageOS Wiki](http://wiki.lineageos.org/) for building instruc
 For more information on this Github Organization and how it is structured, 
 please [read the wiki article](http://wiki.lineageos.org/w/Github_Organization)
 
-*****  Before build add/overwrite files from archive PATCHED.ZIP  *****
+Delete file: rm device/huawei/msm7x27a-common/patches/packages_apps_Settings/0001-Replace-CMUpdater-with-OTAUpdater.patch
 
 Build it with:
 
       . build/envsetup.sh (make sure all patches from /device/huawei/msm7x27a-common/patches are applied)
+      
+*****  add/overwrite files from archive PATCHED-r81.ZIP  *****
+      
       breakfast u8825 (or u8833 or u8951)
       brunch u8825 (for Huawei G300)
       
