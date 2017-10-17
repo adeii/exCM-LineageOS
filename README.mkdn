@@ -33,8 +33,8 @@ To initialize your local repository using the LineageOS trees, use a command lik
 
     repo init -u git://github.com/adeii/exCM-LineageOS.git -b cm-13.0
 
-    mkdir .repo/local_manifest
-    cp huawei.xml .repo/local_manifest
+    mkdir .repo/local_manifests
+    mv .repo/manifests/huawei.xml .repo/local_manifests
 Then to sync up:
 
     repo sync --force-sync --no-tags --no-clone-bundle
@@ -50,7 +50,7 @@ Build it with:
 
       . build/envsetup.sh (make sure all patches from /device/huawei/msm7x27a-common/patches are applied)
       
-*****  add/overwrite files from archive PATCHED-r81.ZIP  *****
+*****  add/overwrite files from archive .repo/manifests/PATCHED-r81.ZIP  *****
       
       breakfast u8825 (or u8833 or u8951)
       brunch u8825 (for Huawei G300)
