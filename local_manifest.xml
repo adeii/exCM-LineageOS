@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+
+	<!--Self update this manifest-->
+	<project path=".repo/local_manifests" name="JDCTeam/local_manifests" remote="github" revision="opt-cm-13.0">
+		<copyfile src="local_manifest.xml" dest="local_manifest.xml" />
+	</project>
+	
+	<!-- *Bluetooth(System)* -->
+	<remove-project name="LineageOS/android_system_bt" path="system/bt" />
+	<project path="system/bt" name="JDCTeam/android_system_bt" remote="github" revision="opt-cm-13.0" />
+	
+	<!-- *Bluetooth(App)* -->
+	<remove-project name="LineageOS/android_packages_apps_Bluetooth" path="packages/apps/Bluetooth" />
+	<project path="packages/apps/Bluetooth" name="JDCTeam/android_packages_apps_Bluetooth" remote="github" revision="opt-cm-13.0"/> 
+
+	<!-- *Build* -->
+	<remove-project name="LineageOS/android_build" path="build" />
+	<project path="build" name="JDCTeam/android_build" remote="github" revision="opt-cm-13.0" >
+	  <copyfile src="core/root.mk" dest="Makefile" />
+	</project>
+	
+	<!-- *Core* -->
+	<remove-project name="LineageOS/android_system_core" path="system/core" />
+	<project path="system/core" name="JDCTeam/android_system_core" remote="github" revision="opt-cm-13.0" />
+	
+	<!-- *Android art* -->
+	<remove-project name="LineageOS/android_art" path="art" />
+	<project path="art" name="JDCTeam/android_art" remote="github" revision="opt-cm-13.0" />
+
+	<!--Device trees-->
+		<!-- *Custom Device tree* -->
+		<project path="device/samsung/jflte" name="JDCTeam/android_device_samsung_jflte" remote="github" revision="opt-cm-13.0" />
+		<project path="device/samsung/jf-common" name="JDCTeam/android_device_samsung_jf-common" remote="github" revision="opt-cm-13.0" />
+		<!--Common device trees-->
+		<project path="device/samsung/qcom-common" name="LineageOS/android_device_samsung_qcom-common" remote="github" revision="cm-13.0" />
+		<project path="device/qcom/common" name="LineageOS/android_device_qcom_common" remote="github" revision="cm-13.0" />
+	
+	<!-- *Framework* -->
+	<remove-project name="LineageOS/android_frameworks_base" path="frameworks/base" />
+	<project path="frameworks/base" name="JDCTeam/android_frameworks_base" remote="github" revision="opt-cm-13.0" />
+
+        <!-- GCC -->
+	<remove-project name="platform/prebuilts/gcc/linux-x86/arm/arm-eabi-4.8" path="prebuilts/gcc/linux-x86/arm/arm-eabi-4.8" />
+        <remove-project name="platform/prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.9" path="prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.9" />
+        <project path="prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.9" name="B--B/Custom_Toolchains" groups="pdk,linux,arm" remote="github" revision="arm-linux-androideabi-4.9-Linaro" />
+
+	<!--Hardware-->
+	<remove-project name="LineageOS/android_hardware_qcom_camera" path="hardware/qcom/camera" />
+	<project path="hardware/qcom/camera" name="JDCTeam/android_hardware_qcom_camera" remote="github" revision="opt-cm-13.0" />
+	
+	<project path="hardware/samsung" name="LineageOS/android_hardware_samsung" remote="github" revision="cm-13.0" />
+
+	<!-- Kernel (Alucard) -->
+	<project path="kernel/cr-arm-eabi-4.9.4" name="Christopher83/arm-cortex_a15-linux-gnueabihf-linaro_4.9" remote="github" revision="master" />
+	<project path="kernel/samsung/Ramdisk" name="JDCTeam/Ramdisk" remote="github" revision="opt-cm-13.0" />
+	<project path="kernel/samsung/alucard24" name="dkati/Alucard-Kernel-jfltexx" remote="github" revision="opt-cm-13.0" />
+
+	<!-- Kernel (base) -->
+	<project path="kernel/samsung/jf" name="LineageOS/android_kernel_samsung_jf" remote="github" revision="cm-13.0" />
+
+	<!-- *Packages* -->
+	<remove-project name="LineageOS/android_packages_apps_Settings" path="packages/apps/Settings" />
+	<remove-project name="LineageOS/android_packages_apps_SetupWizard" path="packages/apps/SetupWizard" />
+	<remove-project name="LineageOS/android_packages_apps_Trebuchet" path="packages/apps/Trebuchet" />
+	<project path="packages/apps/Settings" name="JDCTeam/android_packages_apps_Settings" remote="github" revision="opt-cm-13.0" />
+	<project path="packages/apps/SetupWizard" name="JDCTeam/android_packages_apps_SetupWizard" remote="github" revision="opt-cm-13.0" />
+	<project path="packages/apps/Trebuchet" name="JDCTeam/android_packages_apps_Trebuchet" remote="github" revision="opt-cm-13.0" />
+	<project path="packages/apps/STweaks" name="JDCTeam/STweaks" remote="github" revision="opt-cm-13.0" />
+
+	<!--Proprietary vendor blobs-->
+	<project path="vendor/samsung" name="JDCTeam/proprietary_vendor_samsung" remote="github" revision="jf-6.0-newril" />
+	
+	<!-- Telephony service* -->
+	<remove-project name="LineageOS/android_packages_services_Telephony" path="packages/services/Telephony" />
+	<project path="packages/services/Telephony" name="JDCTeam/android_packages_services_Telephony" remote="github" revision="opt-cm-13.0" />
+	
+	<!-- *Telephony for unified variants* -->
+	<remove-project name="LineageOS/android_frameworks_opt_telephony" path="frameworks/opt/telephony" />
+	<remove-project name="LineageOS/android_packages_apps_CarrierConfig" path="packages/apps/CarrierConfig" />
+	<project path="frameworks/opt/telephony" name="JDCTeam/android_frameworks_opt_telephony" remote="github" revision="opt-cm-13.0" />
+	<project path="packages/apps/CarrierConfig" name="JDCTeam/android_packages_apps_CarrierConfig" remote="github" revision="opt-cm-13.0" />
+
+	<!--*Vendor*-->
+	<remove-project name="LineageOS/android_vendor_cm" path="vendor/cm" />
+	<remove-project name="LineageOS/cm_platform_sdk" path="vendor/cmsdk" />
+	<project path="vendor/cm" name="JDCTeam/android_vendor_cm" remote="github" revision="opt-cm-13.0" />
+	<project path="vendor/cmsdk" name="JDCTeam/cm_platform_sdk" remote="github" revision="opt-cm-13.0" />
+	
+	<project path="vendor/jdc" name="JDCTeam/android_vendor_jdc" remote="github" revision="opt-cm-13.0" >
+	  <copyfile src="build.sh" dest="build.sh" />
+	</project>
+	
+	<!--AROMA installer-->
+	<project path="aroma" name="dkati/Optimized-AromaInstaller" remote="github" revision="opt-cm-13.0" />
+	
+	<!-- * requires upstream merge -->
+
+</manifest>
