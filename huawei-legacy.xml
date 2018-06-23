@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+  <remote  name="bb" fetch="https://bitbucket.org/" />
+  <remote  name="gh" fetch="git://github.com/"  review="https://gerrit.slimroms.net/"/>
+
+<project path="external/webkit" name="Dazzozo/android_external_webkit" remote="gh" revision="kitkat" />
+<!-- HUAWEI Device Folders, Kernel & Proprietary BLOBS -->
+  <project path="vendor/huawei" name="chil360/proprietary_vendor_huawei" remote="github" revision="kitkat"/>
+  <project path="kernel/huawei/huawei-kernel-3.4" name="chil360/chil360-kernel" remote="github" revision="kitkat"/>
+  <project path="device/huawei/msm7x27a-common" name="chil360/android_device_huawei_msm7x27a-common" remote="github" revision="slimkat"/>
+  <project path="device/huawei/u8833" name="chil360/android_device_huawei_u8833" remote="github" revision="slimkat"/>
+  <project path="device/huawei/u8951" name="chil360/android_device_huawei_u8951" remote="github" revision="slimkat"/>
+  <project path="device/huawei/u8825" name="chil360/android_device_huawei_u8825" remote="github" revision="slimkat"/>
+  <project path="hardware/qcom/fm" name="LineageOS/android_hardware_qcom_fm" remote="gh" revision="cm-11.0"/>
+  <project path="device/qcom/common" name="LineageOS/android_device_qcom_common" remote="github" revision="cm-11.0" />
+
+  <!-- GPS -->
+  <remove-project name="LineageOS/android_hardware_qcom_gps"/>
+  <project path="hardware/qcom/gps" name="chil360/android_hardware_qcom_gps" remote="github" revision="kitkat" />
+
+  <!-- QCOM Hardware -->
+  <remove-project name="LineageOS/android_hardware_qcom_display-caf"/>
+  <project name="Dazzozo/android_hardware_qcom_display-legacy" path="hardware/qcom/display-legacy" remote="github" revision="jellybean-mr2" />
+  <project path="hardware/qcom/media-legacy" name="Dazzozo/android_hardware_qcom_media-legacy" remote="github" revision="kitkat" />
+  <!-- WIFI -->
+  <project path="hardware/atheros/wifi/ath6kl-huawei" name="Dazzozo/android_hardware_atheros_wifi_ath6kl-huawei" remote="gh" revision="master" />
+  <project path="hardware/atheros/wlan" name="LineageOS/android_hardware_atheros_wlan" remote="github" revision="cm-11.0" />
+
+  <!-- UBERTC toolchains -->
+  <project path="prebuilts/gcc/linux-x86/arm/arm-eabi-4.8" name="UBERTC/arm-eabi-4.9" remote="bb" revision="master" />
+  <project path="prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.8" name="UBERTC/arm-linux-androideabi-4.8" remote="bb" revision="master" />
+  <project path="prebuilts/gcc/linux-x86/arm/arm-eabi-5.3" name="UBERTC/arm-eabi-5.3" remote="bb" revision="master" />
+  <project path="prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-5.3" name="UBERTC/arm-linux-androideabi-5.3" remote="bb" revision="master" />
+
+  <!-- FOR REMOVE -->
+  <remove-project name="LineageOS/android_device_generic_mips" groups="pdk" />
+  <remove-project name="LineageOS/android_device_generic_x86" groups="pdk" />
+  <remove-project name="device/generic/mini-emulator-armv7-a-neon" groups="pdk" remote="aosp" revision="refs/tags/android-4.4.4_r2" />
+  <remove-project name="device/generic/mini-emulator-mips" groups="pdk" remote="aosp" revision="refs/tags/android-4.4.4_r2" />
+  <remove-project name="device/generic/mini-emulator-x86" groups="pdk" remote="aosp" revision="refs/tags/android-4.4.4_r2" />
+  <remove-project name="LineageOS/android_device_google_accessory_arduino" groups="device" />
+  <remove-project name="LineageOS/android_device_google_accessory_demokit" groups="device" />
+  <remove-project name="LineageOS/android_hardware_invensense" groups="invensense" />
+  <remove-project name="LineageOS/android_hardware_samsung_slsi_exynos5" />
+  <remove-project name="LineageOS/android_hardware_ti_omap3" />
+  <remove-project name="LineageOS/android_hardware_ti_omap4xxx" />
+  <remove-project name="LineageOS/android_hardware_ti_wlan" />
+  <remove-project name="LineageOS/android_hardware_ti_wpan" />
+  <remove-project name="platform/prebuilts/clang/darwin-x86/3.1" />
+  <remove-project name="platform/prebuilts/clang/darwin-x86/3.2"  />
+  <remove-project name="platform/prebuilts/clang/darwin-x86/arm/3.3" />
+  <remove-project name="platform/prebuilts/clang/darwin-x86/host/3.3" />
+  <remove-project name="platform/prebuilts/clang/darwin-x86/mips/3.3" />
+  <remove-project name="platform/prebuilts/clang/darwin-x86/x86/3.3" />
+  <remove-project name="platform/prebuilts/clang/linux-x86/mips/3.3" />
+  <remove-project name="platform/prebuilts/gcc/darwin-x86/x86/x86_64-linux-android-4.7" />
+  <remove-project name="platform/prebuilts/gcc/darwin-x86/arm/arm-eabi-4.6" />
+  <remove-project name="platform/prebuilts/gcc/darwin-x86/arm/arm-eabi-4.7" />
+  <remove-project name="platform/prebuilts/gcc/darwin-x86/arm/arm-linux-androideabi-4.6" />
+  <remove-project name="platform/prebuilts/gcc/darwin-x86/arm/arm-linux-androideabi-4.7" />
+  <remove-project name="platform/prebuilts/gcc/darwin-x86/host/headers" />
+  <remove-project name="platform/prebuilts/gcc/darwin-x86/host/i686-apple-darwin-4.2.1" />
+  <remove-project name="platform/prebuilts/gcc/darwin-x86/mips/mipsel-linux-android-4.6" />
+  <remove-project name="platform/prebuilts/gcc/darwin-x86/mips/mipsel-linux-android-4.7" />
+  <remove-project name="platform/prebuilts/gcc/darwin-x86/x86/i686-linux-android-4.6" />
+  <remove-project name="platform/prebuilts/gcc/darwin-x86/x86/i686-linux-android-4.7" />
+  <remove-project name="platform/prebuilts/gcc/linux-x86/mips/mipsel-linux-android-4.6" />
+  <remove-project name="platform/prebuilts/gcc/linux-x86/mips/mipsel-linux-android-4.7" />
+  <remove-project name="platform/prebuilts/python/darwin-x86/2.7.5" />
+</manifest>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+  <remote  name="bb" fetch="https://bitbucket.org/" />
+  <remote  name="gh" fetch="git://github.com/"  review="https://gerrit.slimroms.net/"/>
+
+<project path="slimcaf/build" name="SlimKat-Y300/android_build" remote="github" revision="kk4.4" >
+    <copyfile src="core/root.mk" dest="Makefile" />
+</project>
+<project path="SLIM/external/wpa_supplicant_8" name="SlimKat-Y300/android_external_wpa_supplicant_8" remote="gh" revision="kk4.4-caf" />
+<project path="SLIM/frameworks/av" name="SlimKat-Y300/frameworks_av" remote="gh" revision="kk4.4-caf" />
+<project path="SLIM/frameworks/base" name="SlimKat-Y300/frameworks_base" remote="gh" revision="kk4.4-caf" />
+<project path="SLIM/frameworks/native" name="SlimKat-Y300/frameworks_native" remote="gh" revision="kk4.4-caf" />
+<project path="SLIM/frameworks/webview" name="SlimKat-Y300/frameworks_webview" remote="gh" revision="kk4.4" />
+<project path="SLIM/hardware/libhardware" name="SlimKat-Y300/hardware_libhardware" remote="gh" revision="kk4.4-caf" />
+<project path="SLIM/hardware/libhardware_legacy" name="SlimKat-Y300/hardware_libhardware_legacy" remote="gh" revision="kk4.4-caf" />
+<project path="SLIM/hardware/qcom/gps" name="SlimKat-Y300/android_hardware_qcom_gps" remote="gh" revision="kitkat" />
+<project path="SLIM/packages/apps/Settings" name="SlimKat-Y300/packages_apps_Settings" remote="gh" revision="kk4.4-caf" />
+<project path="SLIM/system/core" name="SlimKat-Y300/android_system_core" remote="gh" revision="kk4.4-caf" />
+<project path="SLIM/system/netd" name="SlimKat-Y300/android_system_netd" remote="gh" revision="kk4.4" />
+<project path="SLIM/system/vold" name="SlimKat-Y300/android_system_vold" remote="gh" revision="kk4.4" />
+<project path="SLIM/vendor/slim" name="SlimKat-Y300/vendor_slim" remote="gh" revision="kk4.4" />
+<project path="SLIM/hardware/qcom/audio-caf" name="SlimRoms/hardware_qcom_audio-caf" remote="gh" revision="kk4.4" />
+<project path="SLIM/hardware/qcom/display-caf" name="SlimKat-Y300/hardware_qcom_display-caf" remote="gh" revision="kk4.4" />
+<project path="SLIM/hardware/qcom/media-caf" name="SlimRoms/hardware_qcom_media-caf" remote="gh" revision="kk4.4" />
+<!-- HUAWEI Device Folders, Kernel & Proprietary BLOBS -->
+  <project path="vendor/huawei" name="SlimKat-Y300/proprietary_vendor_huawei" remote="gh" revision="slimkat"/>
+  <project path="kernel/huawei/huawei-kernel-3.4" name="SlimLP-Y300/chil360-kernel" remote="gh" revision="lp5.1"/>
+  <project path="device/huawei/msm7x27a-common" name="SlimKat-Y300/android_device_huawei_msm7x27a-common" remote="gh" revision="slimkat"/>
+  <project path="device/huawei/u8833" name="SlimKat-Y300/android_device_huawei_u8833" remote="gh" revision="slimkat"/>
+  <project path="device/huawei/u8951" name="SlimKat-Y300/android_device_huawei_u8951" remote="gh" revision="slimkat"/>
+  <project path="device/huawei/u8825" name="SlimKat-Y300/android_device_huawei_u8825" remote="gh" revision="slimkat"/>
+
+  <!-- WIFI -->
+  <project path="hardware/atheros/wifi/ath6kl-huawei" name="Dazzozo/android_hardware_atheros_wifi_ath6kl-huawei" remote="gh" revision="master" />
+  <project path="hardware/atheros/wlan" name="legaCyMod/android_hardware_atheros_wlan" remote="gh" revision="cm-11.0" />
+
+  <!-- UBERTC toolchains -->
+  <project path="prebuilts/gcc/linux-x86/arm/arm-eabi-4.8" name="UBERTC/arm-eabi-4.9" remote="bb" revision="master" />
+  <project path="prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.8" name="UBERTC/arm-linux-androideabi-4.8" remote="bb" revision="master" />
+
+  <!-- FOR REMOVE -->
+  <remove-project name="LineageOS/android_device_generic_mips" groups="pdk" />
+  <remove-project name="LineageOS/android_device_generic_x86" groups="pdk" />
+  <remove-project name="device/generic/mini-emulator-armv7-a-neon" groups="pdk" remote="aosp" revision="refs/tags/android-4.4.4_r2" />
+  <remove-project name="device/generic/mini-emulator-mips" groups="pdk" remote="aosp" revision="refs/tags/android-4.4.4_r2" />
+  <remove-project name="device/generic/mini-emulator-x86" groups="pdk" remote="aosp" revision="refs/tags/android-4.4.4_r2" />
+  <remove-project name="LineageOS/android_device_google_accessory_arduino" groups="device" />
+  <remove-project name="LineageOS/android_device_google_accessory_demokit" groups="device" />
+  <remove-project name="LineageOS/android_hardware_invensense" groups="invensense" />
+  <remove-project name="LineageOS/android_hardware_samsung_slsi_exynos5" />
+  <remove-project name="LineageOS/android_hardware_ti_omap3" />
+  <remove-project name="LineageOS/android_hardware_ti_omap4xxx" />
+  <remove-project name="LineageOS/android_hardware_ti_wlan" />
+  <remove-project name="LineageOS/android_hardware_ti_wpan" />
+  <remove-project name="platform/prebuilts/clang/darwin-x86/3.1" />
+  <remove-project name="platform/prebuilts/clang/darwin-x86/3.2"  />
+  <remove-project name="platform/prebuilts/clang/darwin-x86/arm/3.3" />
+  <remove-project name="platform/prebuilts/clang/darwin-x86/host/3.3" />
+  <remove-project name="platform/prebuilts/clang/darwin-x86/mips/3.3" />
+  <remove-project name="platform/prebuilts/clang/darwin-x86/x86/3.3" />
+  <remove-project name="platform/prebuilts/clang/linux-x86/mips/3.3" />
+  <remove-project name="platform/prebuilts/gcc/darwin-x86/x86/x86_64-linux-android-4.7" />
+  <remove-project name="platform/prebuilts/gcc/darwin-x86/arm/arm-eabi-4.6" />
+  <remove-project name="platform/prebuilts/gcc/darwin-x86/arm/arm-eabi-4.7" />
+  <remove-project name="platform/prebuilts/gcc/darwin-x86/arm/arm-linux-androideabi-4.6" />
+  <remove-project name="platform/prebuilts/gcc/darwin-x86/arm/arm-linux-androideabi-4.7" />
+  <remove-project name="platform/prebuilts/gcc/darwin-x86/host/headers" />
+  <remove-project name="platform/prebuilts/gcc/darwin-x86/host/i686-apple-darwin-4.2.1" />
+  <remove-project name="platform/prebuilts/gcc/darwin-x86/mips/mipsel-linux-android-4.6" />
+  <remove-project name="platform/prebuilts/gcc/darwin-x86/mips/mipsel-linux-android-4.7" />
+  <remove-project name="platform/prebuilts/gcc/darwin-x86/x86/i686-linux-android-4.6" />
+  <remove-project name="platform/prebuilts/gcc/darwin-x86/x86/i686-linux-android-4.7" />
+  <remove-project name="platform/prebuilts/gcc/linux-x86/mips/mipsel-linux-android-4.6" />
+  <remove-project name="platform/prebuilts/gcc/linux-x86/mips/mipsel-linux-android-4.7" />
+  <remove-project name="platform/prebuilts/python/darwin-x86/2.7.5" />
+</manifest>
