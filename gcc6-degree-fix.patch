@@ -1,0 +1,21 @@
+diff --git a/include/linux/rmap.h b/include/linux/rmap.h
+index fd07c45..58e1c07 100644
+--- a/include/linux/rmap.h
++++ b/include/linux/rmap.h
+@@ -36,6 +36,16 @@ struct anon_vma {
+ 	 */
+ 	atomic_t refcount;
+ 
++	/*
++         * Count of child anon_vmas and VMAs which points to this anon_vma.
++	 *
++	 * This counter is used for making decision about reusing anon_vma
++	 * instead of forking new one. See comments in function anon_vma_clone.
++	 */
++	unsigned degree;
++
++	struct anon_vma *parent;	/* Parent of this anon_vma */
++
+ 	/*
+ 	 * NOTE: the LSB of the head.next is set by
+ 	 * mm_take_all_locks() _after_ taking the above lock. So the

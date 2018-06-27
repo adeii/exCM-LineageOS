@@ -1,0 +1,313 @@
+diff --git a/Makefile b/Makefile
+old mode 100644
+new mode 100755
+index 68dda32..7ca83ec
+--- a/Makefile
++++ b/Makefile
+@@ -430,7 +430,7 @@ KBUILD_CPPFLAGS := -D__KERNEL__
+ KBUILD_CFLAGS   := -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs \
+ 		   -fno-strict-aliasing -fno-common \
+ 		   -Werror-implicit-function-declaration \
+-		   -Wno-format-security \
++		   -Wno-format-security -Wunused-variable \
+ 		   -fno-delete-null-pointer-checks -Wno-array-bounds -Wno-maybe-uninitialized
+ KBUILD_AFLAGS_KERNEL := -Wa,-mimplicit-it=thumb
+ KBUILD_CFLAGS_KERNEL :=
+diff --git a/arch/arm/include/asm/ftrace.h b/arch/arm/include/asm/ftrace.h
+old mode 100644
+new mode 100755
+index f89515a..2bb8cac
+--- a/arch/arm/include/asm/ftrace.h
++++ b/arch/arm/include/asm/ftrace.h
+@@ -45,7 +45,7 @@ void *return_address(unsigned int);
+ 
+ #else
+ 
+-extern inline void *return_address(unsigned int level)
++static inline void *return_address(unsigned int level)
+ {
+ 	return NULL;
+ }
+diff --git a/arch/arm/kernel/return_address.c b/arch/arm/kernel/return_address.c
+old mode 100644
+new mode 100755
+index 58278eb..6dc213e
+--- a/arch/arm/kernel/return_address.c
++++ b/arch/arm/kernel/return_address.c
+@@ -62,11 +62,6 @@ void *return_address(unsigned int level)
+ #warning "TODO: return_address should use unwind tables"
+ #endif
+ 
+-void *return_address(unsigned int level)
+-{
+-	return NULL;
+-}
+-
+ #endif /* if defined(CONFIG_FRAME_POINTER) && !defined(CONFIG_ARM_UNWIND) / else */
+ 
+ EXPORT_SYMBOL_GPL(return_address);
+diff --git a/arch/arm/mach-msm/dal_axi.c b/arch/arm/mach-msm/dal_axi.c
+old mode 100644
+new mode 100755
+index 9144adc..58b4997
+--- a/arch/arm/mach-msm/dal_axi.c
++++ b/arch/arm/mach-msm/dal_axi.c
+@@ -190,12 +190,12 @@ int axi_halt(int port)
+ 	return __axi_halt(port);
+ }
+ 
+-int axi_free(mode)
++int axi_free(int mode)
+ {
+ 	return __axi_free(mode);
+ }
+ 
+-int axi_allocate(mode)
++int axi_allocate(int mode)
+ {
+ 	return __axi_allocate(mode);
+ }
+diff --git a/arch/arm/mach-msm/include/mach/msm_battery.h b/arch/arm/mach-msm/include/mach/msm_battery.h
+old mode 100644
+new mode 100755
+index 0af47a4..cf41062
+--- a/arch/arm/mach-msm/include/mach/msm_battery.h
++++ b/arch/arm/mach-msm/include/mach/msm_battery.h
+@@ -27,7 +27,17 @@ struct msm_psy_batt_pdata {
+ 	u32 (*calculate_capacity)(u32 voltage);
+ };
+ 
+-#ifdef CONFIG_HUAWEI_EVALUATE_POWER_CONSUMPTION 
++struct msm_batt_gauge {
++	int (*get_battery_mvolts) (void);
++	int (*get_battery_temperature) (void);
++	int (*is_battery_present) (void);
++	int (*is_battery_temp_within_range) (void);
++	int (*is_battery_id_valid) (void);
++	int (*get_battery_status)(void);
++	int (*get_batt_remaining_capacity) (void);
++};
++
++#ifdef CONFIG_HUAWEI_EVALUATE_POWER_CONSUMPTION
+ typedef enum {   
+    EVENT_LCD_STATE = 0, /*LCD*/
+    EVENT_INS_CAMERA_STATE = 1, /*inside camera*/
+diff --git a/arch/arm/mach-msm/include/mach/qdsp6v2/apr.h b/arch/arm/mach-msm/include/mach/qdsp6v2/apr.h
+old mode 100644
+new mode 100755
+index 62d7a33..ff8f078
+--- a/arch/arm/mach-msm/include/mach/qdsp6v2/apr.h
++++ b/arch/arm/mach-msm/include/mach/qdsp6v2/apr.h
+@@ -140,7 +140,7 @@ struct apr_client {
+ 
+ struct apr_svc *apr_register(char *dest, char *svc_name, apr_fn svc_fn,
+ 					uint32_t src_port, void *priv);
+-inline int apr_fill_hdr(void *handle, uint32_t *buf, uint16_t src_port,
++void *apr_fill_hdr(void *handle, uint32_t *buf, uint16_t src_port,
+ 			uint16_t msg_type, uint16_t dest_port,
+ 			uint32_t token, uint32_t opcode, uint16_t len);
+ 
+diff --git a/drivers/gpu/msm/kgsl_iommu.c b/drivers/gpu/msm/kgsl_iommu.c
+old mode 100644
+new mode 100755
+index ca00d16..c226aa1
+--- a/drivers/gpu/msm/kgsl_iommu.c
++++ b/drivers/gpu/msm/kgsl_iommu.c
+@@ -912,7 +912,7 @@ static int kgsl_iommu_init_sync_lock(struct kgsl_mmu *mmu)
+  *
+  * Return - int - number of commands.
+  */
+-inline unsigned int kgsl_iommu_sync_lock(struct kgsl_mmu *mmu,
++static inline unsigned int kgsl_iommu_sync_lock(struct kgsl_mmu *mmu,
+ 						unsigned int *cmds)
+ {
+ 	struct kgsl_device *device = mmu->device;
+@@ -982,7 +982,7 @@ inline unsigned int kgsl_iommu_sync_lock(struct kgsl_mmu *mmu,
+  *
+  * Return - int - number of commands.
+  */
+-inline unsigned int kgsl_iommu_sync_unlock(struct kgsl_mmu *mmu,
++static inline unsigned int kgsl_iommu_sync_unlock(struct kgsl_mmu *mmu,
+ 					unsigned int *cmds)
+ {
+ 	struct kgsl_device *device = mmu->device;
+diff --git a/drivers/hwmon/msm_adc.c b/drivers/hwmon/msm_adc.c
+old mode 100644
+new mode 100755
+index 018ce79..9ef5e75
+--- a/drivers/hwmon/msm_adc.c
++++ b/drivers/hwmon/msm_adc.c
+@@ -1175,7 +1175,7 @@ static int __devinit msm_rpc_adc_device_init(struct platform_device *pdev)
+ 			goto dev_init_err;
+ 		}
+ 
+-		if (!pdata->target_hw == MSM_8x25) {
++		if (pdata->target_hw == MSM_8x25) {
+ 			/* DAL device lookup */
+ 			rc = msm_adc_getinputproperties(msm_adc, adc_dev->name,
+ 								&target);
+diff --git a/drivers/input/accelerometer/gs_adi346.c b/drivers/input/accelerometer/gs_adi346.c
+old mode 100644
+new mode 100755
+index bbe7588..98006ec
+--- a/drivers/input/accelerometer/gs_adi346.c
++++ b/drivers/input/accelerometer/gs_adi346.c
+@@ -271,7 +271,7 @@ static inline int reg_write(struct gs_data *gs, int reg, uint8_t val)
+ 
+ /**************************************************************************************/
+ 
+-static int gs_data_to_compass(signed short accel_data [3])
++static int gs_data_to_compass(signed short *accel_data)
+ {
+ 	memset((void*)accel_data, 0, sizeof(accel_data));
+ 	accel_data[0]=st_sensor_data[0];
+diff --git a/drivers/input/accelerometer/gs_bosch.c b/drivers/input/accelerometer/gs_bosch.c
+index 89c3ee6..35f1566 100644
+--- a/drivers/input/accelerometer/gs_bosch.c
++++ b/drivers/input/accelerometer/gs_bosch.c
+@@ -225,7 +225,7 @@ static int bma250_set_mode(unsigned char Mode)
+ }
+ /**************************************************************************************/
+ 
+-static int gs_data_to_compass(signed short accel_data [3])
++static int gs_data_to_compass(signed short *accel_data)
+ {
+ 	memset((void*)accel_data, 0, sizeof(accel_data));
+ 	accel_data[0]=compass_sensor_data[0];
+@@ -758,7 +758,8 @@ static int gs_resume(struct i2c_client *client)
+ {
+ 	struct gs_data *gs = i2c_get_clientdata(client);
+ 	
+-	bma250_set_mode(MODE_NORMAL); 	
++	bma250_set_mode(MODE_NORMAL); 
++	
+ 	if (!gs->use_irq)
+ 		hrtimer_start(&gs->timer, ktime_set(1, 0), HRTIMER_MODE_REL);
+ 	else
+diff --git a/drivers/input/accelerometer/gs_kxtik1004.c b/drivers/input/accelerometer/gs_kxtik1004.c
+old mode 100644
+new mode 100755
+index dd452d8..866bc33
+--- a/drivers/input/accelerometer/gs_kxtik1004.c
++++ b/drivers/input/accelerometer/gs_kxtik1004.c
+@@ -130,7 +130,7 @@ static inline int reg_write(struct gs_data *gs, int reg, uint8_t val)
+ static signed short gs_sensor_data[3];
+ static char kxtik_device_id[] = "kxtik_1004";
+ 
+-static int gs_data_to_compass(signed short accel_data [3])
++static int gs_data_to_compass(signed short *accel_data)
+ {
+ 	memset((void*)accel_data, 0, sizeof(accel_data));
+ 	accel_data[0]=gs_sensor_data[0];
+diff --git a/drivers/input/accelerometer/gs_mma8452.c b/drivers/input/accelerometer/gs_mma8452.c
+index 9ba3918..0928a8a 100644
+--- a/drivers/input/accelerometer/gs_mma8452.c
++++ b/drivers/input/accelerometer/gs_mma8452.c
+@@ -247,7 +247,7 @@ static inline int reg_write(struct gs_data *gs, int reg, uint8_t val)
+ 
+ /**************************************************************************************/
+ 
+-static int gs_data_to_compass(signed short accel_data [3])
++static int gs_data_to_compass(signed short *accel_data)
+ {
+ 	memset((void*)accel_data, 0, sizeof(accel_data));
+ 	accel_data[0]=compass_sensor_data[0];
+diff --git a/drivers/input/accelerometer/gs_st_lis3xh.c b/drivers/input/accelerometer/gs_st_lis3xh.c
+old mode 100644
+new mode 100755
+index e5ebe35..58e7acc
+--- a/drivers/input/accelerometer/gs_st_lis3xh.c
++++ b/drivers/input/accelerometer/gs_st_lis3xh.c
+@@ -172,7 +172,7 @@ static signed short gs_sensor_data[3];
+ /*adjust device name */
+ static char st_device_id[] = "st_lis3xh";
+ 
+-static int gs_data_to_compass(signed short accel_data [3])
++static int gs_data_to_compass(signed short *accel_data)
+ {
+ 	memset((void*)accel_data, 0, sizeof(accel_data));
+ 	accel_data[0]=gs_sensor_data[0];
+diff --git a/drivers/input/mouse/lifebook.h b/drivers/input/mouse/lifebook.h
+old mode 100644
+new mode 100755
+index 4c4326c..0baf02a
+--- a/drivers/input/mouse/lifebook.h
++++ b/drivers/input/mouse/lifebook.h
+@@ -16,14 +16,14 @@ void lifebook_module_init(void);
+ int lifebook_detect(struct psmouse *psmouse, bool set_properties);
+ int lifebook_init(struct psmouse *psmouse);
+ #else
+-inline void lifebook_module_init(void)
++static inline void lifebook_module_init(void)
+ {
+ }
+-inline int lifebook_detect(struct psmouse *psmouse, bool set_properties)
++static inline int lifebook_detect(struct psmouse *psmouse, bool set_properties)
+ {
+ 	return -ENOSYS;
+ }
+-inline int lifebook_init(struct psmouse *psmouse)
++static inline int lifebook_init(struct psmouse *psmouse)
+ {
+ 	return -ENOSYS;
+ }
+diff --git a/drivers/input/mouse/sentelic.h b/drivers/input/mouse/sentelic.h
+old mode 100644
+new mode 100755
+index 334de19..06fc881
+--- a/drivers/input/mouse/sentelic.h
++++ b/drivers/input/mouse/sentelic.h
+@@ -115,7 +115,7 @@ struct fsp_data {
+ extern int fsp_detect(struct psmouse *psmouse, bool set_properties);
+ extern int fsp_init(struct psmouse *psmouse);
+ #else
+-inline int fsp_detect(struct psmouse *psmouse, bool set_properties)
++static inline int fsp_detect(struct psmouse *psmouse, bool set_properties)
+ {
+ 	return -ENOSYS;
+ }
+diff --git a/drivers/media/video/msm/sensors/mt9e013_v4l2.c b/drivers/media/video/msm/sensors/mt9e013_v4l2.c
+old mode 100644
+new mode 100755
+index 2ab264f..be5cedf
+--- a/drivers/media/video/msm/sensors/mt9e013_v4l2.c
++++ b/drivers/media/video/msm/sensors/mt9e013_v4l2.c
+@@ -786,7 +786,7 @@ static int32_t mt9e013_sensor_setting(struct msm_sensor_ctrl_t *s_ctrl,
+ 	return rc;
+ }
+ /*read OTP value function*/
+-inline int32_t reading(struct msm_sensor_ctrl_t *s_ctrl)
++static inline int32_t reading(struct msm_sensor_ctrl_t *s_ctrl)
+ {
+ 	int32_t rc = -1;
+ 	unsigned short i = 0;
+diff --git a/mm/oom_kill.c b/mm/oom_kill.c
+old mode 100644
+new mode 100755
+index d9664d9..0660d57
+--- a/mm/oom_kill.c
++++ b/mm/oom_kill.c
+@@ -708,7 +708,7 @@ void out_of_memory(struct zonelist *zonelist, gfp_t gfp_mask,
+ 	struct task_struct *p;
+ 	unsigned long totalpages;
+ 	unsigned long freed = 0;
+-	unsigned int points;
++	unsigned int uninitialized_var(points);
+ 	enum oom_constraint constraint = CONSTRAINT_NONE;
+ 	int killed = 0;
+ 
+diff --git a/mm/rmap.c b/mm/rmap.c
+old mode 100644
+new mode 100755
+index 46dfc4e..ff4068e
+--- a/mm/rmap.c
++++ b/mm/rmap.c
+@@ -613,7 +613,7 @@ void page_unlock_anon_vma(struct anon_vma *anon_vma)
+  * Returns virtual address or -EFAULT if page's index/offset is not
+  * within the range mapped the @vma.
+  */
+-inline unsigned long
++static inline unsigned long
+ vma_address(struct page *page, struct vm_area_struct *vma)
+ {
+ 	pgoff_t pgoff = page->index << (PAGE_CACHE_SHIFT - PAGE_SHIFT);
