@@ -592,7 +592,6 @@
   <project path="device/huawei/u8833" name="SlimLP-Y300/android_device_huawei_u8833" remote="github" revision="lp5.1"/>
   <project path="device/huawei/u8951" name="SlimLP-Y300/android_device_huawei_u8951" remote="github" revision="lp5.1"/>
   <project path="device/huawei/u8825" name="SlimLP-Y300/android_device_huawei_u8825" remote="github" revision="lp5.1"/>
-  <project path="device/generic/goldfish" name="device/generic/goldfish" groups="pdk" />
   <!-- WIFI -->
   <project path="hardware/atheros/wifi/ath6kl-huawei" name="knoelli/android_hardware_atheros_wifi_ath6kl" remote="github" revision="u8833" />
   <project path="hardware/atheros/wlan" name="CM13-Y300/android_hardware_atheros_wlan" remote="github" revision="cm-13.0" />
