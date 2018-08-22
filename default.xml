@@ -443,7 +443,7 @@
   <project path="packages/apps/Camera2" name="LineageOS/android_packages_apps_Camera2" />
   <project path="packages/apps/CellBroadcastReceiver" name="LineageOS/android_packages_apps_CellBroadcastReceiver" />
   <project path="packages/apps/CertInstaller" name="LineageOS/android_packages_apps_CertInstaller" />
-  <project path="packages/apps/CMBugReport" name="LineageOSandroid_packages_apps_CMBugreport" />
+  <project path="packages/apps/CMBugReport" name="LineageOS/android_packages_apps_CMBugreport" />
   <project path="packages/apps/CMFileManager" name="LineageOS/android_packages_apps_CMFileManager" />
   <!-- <project path="packages/apps/CMHome" name="CyanogenMod/android_packages_apps_CMHome" /> -->
   <project path="packages/apps/CMUpdater" name="LineageOS/android_packages_apps_CMUpdater" />
