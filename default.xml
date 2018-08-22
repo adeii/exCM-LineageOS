@@ -457,7 +457,7 @@
   <project path="packages/apps/Exchange" name="LineageOS/android_packages_apps_Exchange" />
   <project path="packages/apps/Gallery2" name="LineageOS/android_packages_apps_Gallery2" />
   <project path="packages/apps/HTMLViewer" name="LineageOS/android_packages_apps_HTMLViewer" />
-  <project path="packages/apps/InCallUI" name="CyanogenMod/android_packages_apps_InCallUI" />
+  <project path="packages/apps/InCallUI" name="LineageOS/android_packages_apps_InCallUI" />
   <project path="packages/apps/KeyChain" name="LineageOS/android_packages_apps_KeyChain" />
   <project path="packages/apps/LockClock" name="LineageOS/android_packages_apps_LockClock" />
   <project path="packages/apps/ManagedProvisioning" name="LineageOS/android_packages_apps_ManagedProvisioning" />
