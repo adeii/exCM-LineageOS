@@ -1,4 +1,4 @@
-CyanogenMod
+LineageOS 12.1 LolliPop
 ===========
 
 Submitting Patches
@@ -31,11 +31,11 @@ familiar with [Git and Repo](http://source.android.com/source/using-repo.html).
 
 To initialize your local repository using the CyanogenMod trees, use a command like this:
 
-    repo init -u git://github.com/CyanogenMod/android.git -b cm-12.1
+    repo init -u git://github.com/adeii/exCM-LineageOS.git -b cm-12.1
 
 Then to sync up:
 
-    repo sync
+    repo sync --force-sync --no-tags --no-clone-bundle
 
 Please see the [CyanogenMod Wiki](http://wiki.cyanogenmod.org/) for building instructions.
 
