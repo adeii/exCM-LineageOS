@@ -45,7 +45,15 @@ Then to sync up:
 
     repo sync --force-sync --no-tags --no-clone-bundle
 
-Please see the [CyanogenMod Wiki](http://wiki.cyanogenmod.org/) for building instructions.
+To build:
+1> delete bad patches from /device/huawei/msm7x27a-com/patches (see --bad folder in patched.zip)
+2>      . build/envsetup.sh
+3> overwrite files with files from patched.zip
+4>       lunch cm_u8833-userdebug (or u8825 or u8951)
+5a>      make -j2 (or desired number or parallel jobs, -j4, -j8 etc...)
+5b>      brunch u8833 (for single job)
 
+
+Please see the [CyanogenMod Wiki](http://wiki.cyanogenmod.org/) for building instructions.
 For more information on this Github Organization and how it is structured, 
 please [read the wiki article](http://wiki.cyanogenmod.org/w/Github_Organization)
